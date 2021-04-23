@@ -16,7 +16,7 @@ namespace LibraryTerminal
             //StreamWriter writer = new StreamWriter("../../../testfile.txt");
             //writer.WriteLine("Hi test");
             //writer.Close();
-
+            library.CreateDueDate();
         }
     }
 }
