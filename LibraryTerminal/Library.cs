@@ -12,7 +12,10 @@ namespace LibraryTerminal
             new Book("Dr.Suess","The cat in the Hat",true,""),
             new Book("Jhumpa Lahiri", "Interpreter of Maladies" , true ,""),
             new Book("Jim Harrison", "Woman Lit by Fireflies", false, "5/14/21")
+
         };
+
+        
         //property
         public List<Book> Book
         {
@@ -33,6 +36,13 @@ namespace LibraryTerminal
             {
                 Console.WriteLine(books.ToString());
             }
+        }
+
+        public void CreateDueDate()
+        {
+            var date = DateTime.Now.AddDays(14); 
+            var dateShort = date.ToShortDateString();
+            Console.WriteLine(dateShort);
         }
 
     }
