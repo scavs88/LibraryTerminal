@@ -10,7 +10,7 @@ namespace LibraryTerminal
         private string _author;
         private string _title;
         private bool _status;
-        private int _duedate;
+        private string _duedate;
 
         //properties
         public string Author
@@ -31,13 +31,13 @@ namespace LibraryTerminal
             set { this._status = value; }
         }
 
-        public int Duedate
+        public string Duedate
         {
             get { return this._duedate; }
             set { this._duedate = value; }
         }
         //constructor
-        public Book(string author, string title, bool status, int duedate)
+        public Book(string author, string title, bool status, string duedate)
         {
             this._author = author;
             this._title = title;
