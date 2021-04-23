@@ -45,5 +45,37 @@ namespace LibraryTerminal
             Console.WriteLine(dateShort);
         }
 
+        public  bool SearchByAuthor(string input)
+        {
+            bool status = false;
+            foreach(Book book in this._book)
+            {
+                if (book.Author == input)
+                {
+                    Console.WriteLine("Yes the book is avaiable");
+                    status= true;
+                }
+
+            }
+            return status;
+        }
+
+        public bool SearchByTitle(string input)
+        {
+            bool status = false;
+            foreach (Book book in this._book)
+            {
+                if (book.Title == input)
+                {
+                    Console.WriteLine("Yes the book is avaiable");
+                    status = true;
+                }
+
+            }
+            return status;
+        }
+
+        //public void 
+
     }
 }
