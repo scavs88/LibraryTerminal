@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.IO;
 
 namespace LibraryTerminal
 {
@@ -6,9 +8,13 @@ namespace LibraryTerminal
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-            Console.WriteLine("Welcome to our project");
-            Console.WriteLine("Added for branch");
+            Book book = new Book("Jim Harrison", "Woman Lit by Fireflies", false, 14);
+            Console.WriteLine(book);
+
+            //StreamWriter writer = new StreamWriter("../../../testfile.txt");
+            //writer.WriteLine("Hi test");
+            //writer.Close();
+
         }
     }
 }
