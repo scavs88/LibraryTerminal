@@ -10,6 +10,10 @@ namespace LibraryTerminal
         {
             Library library = new Library();
             library.DisplayList();
+
+           
+
+
             Console.WriteLine("Enter the author  name to search");
             string name = Console.ReadLine();
             bool check1 = library.SearchByAuthor(name);
@@ -23,6 +27,7 @@ namespace LibraryTerminal
             //writer.WriteLine("Hi test");
             //writer.Close();
             library.CreateDueDate();
+
         }
     }
 }

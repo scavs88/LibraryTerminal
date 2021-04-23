@@ -38,6 +38,18 @@ namespace LibraryTerminal
             }
         }
 
+
+        public void KeywordSearch()
+        {
+            foreach (Book word in title)
+            {
+                bool keyword = true;
+                while (keyword)
+                if (word == Library.)
+            }
+        }
+
+
         public void CreateDueDate()
         {
             var date = DateTime.Now.AddDays(14); 
@@ -76,6 +88,7 @@ namespace LibraryTerminal
         }
 
         //public void 
+
 
     }
 }
