@@ -35,5 +35,15 @@ namespace LibraryTerminal
             }
         }
 
+        public void KeywordSearch()
+        {
+            foreach (Book word in title)
+            {
+                bool keyword = true;
+                while (keyword)
+                if (word == Library.)
+            }
+        }
+
     }
 }
