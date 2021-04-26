@@ -51,6 +51,7 @@ namespace LibraryTerminal
                 {
                     Console.WriteLine("Enter a keyword to search for");
                     string input = Console.ReadLine();
+                    Console.WriteLine("We found");
                     library.SearchByKeyword(input);
                 }
                 else if (choice == 4)
@@ -69,6 +70,7 @@ namespace LibraryTerminal
                     string keepGoing = Console.ReadLine().ToLower().Trim();
                     if (keepGoing == "y")
                     {
+                        Console.Clear();
                         break;
                     }
                     else if (keepGoing == "n")
@@ -80,6 +82,7 @@ namespace LibraryTerminal
                     {
                         Console.WriteLine("Invalid input");
                     }
+                    
                 }
             }
         }

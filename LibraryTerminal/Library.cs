@@ -105,8 +105,8 @@ namespace LibraryTerminal
             for (int i = 0; i < _books.Count; i++)
             {
                 if (this._books[i].Title.ToLower().Trim().Contains(input))
-                {
-                    Console.WriteLine($"We found {this._books[i].ToString()}");
+                {                  
+                    Console.WriteLine($"{this._books[i].ToString()}");
                 }
             }
         }
@@ -141,6 +141,7 @@ namespace LibraryTerminal
 
 
         }
+
     }
 
 }
