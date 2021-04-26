@@ -9,9 +9,8 @@ namespace LibraryTerminal
         //field
         private List<Book> _books = new List<Book>
         {
-            new Book("Dr.Suess","The Cat in the Hat",true,""),
-            new Book("Jhumpa Lahiri", "Interpreter of Maladies" , true ,""),
-            new Book("Jim Harrison", "Woman Lit by Fireflies", false, "5/14/21"),
+            new Book("Dr. Seuss","The Cat in the Hat",true,""),
+            new Book("Jhumpa Lahiri", "Interpreter of Maladies" , true ,""),           
             new Book("Jim Harrison", "Woman Lit by Fireflies", false, "5/14/2021"),
             new Book("Leslie Orchard", "Hacking RSS and Atom", true, ""),
             new Book("Christian Klaver", "Shadows Over London", true, ""),
@@ -24,6 +23,8 @@ namespace LibraryTerminal
             new Book("John Feinstein", "Last Amateurs", true, ""),
 
         };
+
+
 
         //property
         public List<Book> Books
@@ -42,7 +43,6 @@ namespace LibraryTerminal
         public void DisplayList()
         {
             foreach (Book books in this._books)
-
             {
                 Console.WriteLine(books.ToString());
             }
@@ -53,7 +53,7 @@ namespace LibraryTerminal
 
             var dateShort = date.ToShortDateString();
             Console.WriteLine($"The due date is { dateShort}");
-            
+
         }
 
         public bool SearchByAuthor(string input)
@@ -69,11 +69,7 @@ namespace LibraryTerminal
             }
             if (!status)
             {
-
-                    Console.WriteLine(" That book is not available");                
-
-                
-
+                Console.WriteLine(" That book is not available");
             }
             return status;
         }
@@ -92,8 +88,7 @@ namespace LibraryTerminal
             if (status)
             {
                 Console.WriteLine("Yes the book is available");
-                CreateDueDate();
-                
+                CreateDueDate();               
             }
             else
             {
@@ -102,46 +97,54 @@ namespace LibraryTerminal
         }
 
 
-        public void SearchByTitle(string input)
-
-        {
-            //bool status = false;
-            foreach (Book book in this._books)
-            {
-                if (book.Title == input)
-                {
-                    Console.WriteLine("Yes the book is available");
-                    //status = true;
-                }
-            }
-        }
+       
 
         public void SearchByKeyword(string input)
         {
 
-            foreach (Book word in this._books)
+            for (int i = 0; i < _books.Count; i++)
             {
-                if (word.Title.Contains(input.Trim().ToLower()))
-                {
-                    Console.WriteLine($"We found {word.ToString()}");                  
-                }                
-            }
-        }
-
-        public void SearchByKyword(string input)
-        {
-            
-            for (int i = 0; i < _books.Count ; i++)
-            {
-                if (this._books[i].Title.ToLower().Contains(input))
+                if (this._books[i].Title.ToLower().Trim().Contains(input))
                 {
                     Console.WriteLine($"We found {this._books[i].ToString()}");
                 }
             }
         }
 
+
+        public void ReturnBook()
+        {
+
+            Console.WriteLine("Enter the title of the book to return");
+            string title1 = Console.ReadLine().Trim().ToLower();
+            bool status1 = false;
+            foreach (Book book in this._books)
+            {
+                if (book.Title.ToLower().Trim() == title1 && book.Status == false)
+                {
+
+                    book.Status = true;
+                    status1 = true;
+
+                }
+            }
+            if (status1 == true)
+            {
+                Console.WriteLine("You returned the book successfully ");
+            }
+
+            else
+            {
+                Console.WriteLine("This book has not been checked out");
+            }
+
+
+
+        }
     }
+
 }
+
 
 
 
