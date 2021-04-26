@@ -110,18 +110,27 @@ namespace LibraryTerminal
             {
                 if (book.Title == input)
                 {
-                    Console.WriteLine("Yes the book is avaiable");
-                    status = true;
+                    Console.WriteLine("Yes the book is available");
+                    //status = true;
                 }
             }
 
         }
 
-      
-
-
-        
-
+        public void SearchByKeyword(string input)
+        {
+            foreach (Book word in this._books)
+            {
+                if (word.Title == input)
+                {
+                    Console.WriteLine($"We found {word.ToString()}");
+                }
+                else
+                {
+                    Console.WriteLine($"There was no book with {word} in any title.");
+                }
+            }
+        }
     }
 }
 
