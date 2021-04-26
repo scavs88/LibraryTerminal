@@ -9,7 +9,7 @@ namespace LibraryTerminal
         //field
         private List<Book> _books = new List<Book>
         {
-            new Book("Dr.Suess","The cat in the Hat",true,""),
+            new Book("Dr.Suess","The Cat in the Hat",true,""),
             new Book("Jhumpa Lahiri", "Interpreter of Maladies" , true ,""),
             new Book("Jim Harrison", "Woman Lit by Fireflies", false, "5/14/21"),
             new Book("Jim Harrison", "Woman Lit by Fireflies", false, "5/14/2021"),
@@ -114,23 +114,32 @@ namespace LibraryTerminal
                     status = true;
                 }
             }
-
         }
 
         public void SearchByKeyword(string input)
         {
+
             foreach (Book word in this._books)
             {
-                if (word.Title == input)
+                if (word.Title.Contains(input.Trim().ToLower()))
                 {
-                    Console.WriteLine($"We found {word.ToString()}");
-                }
-                else
+                    Console.WriteLine($"We found {word.ToString()}");                  
+                }                
+            }
+        }
+
+        public void SearchByKyword(string input)
+        {
+            
+            for (int i = 0; i < _books.Count ; i++)
+            {
+                if (this._books[i].Title.ToLower().Contains(input))
                 {
-                    Console.WriteLine($"There was no book with {word} in any title.");
+                    Console.WriteLine($"We found {this._books[i].ToString()}");
                 }
             }
         }
+
     }
 }
 
