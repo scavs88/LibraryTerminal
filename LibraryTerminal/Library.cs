@@ -105,13 +105,13 @@ namespace LibraryTerminal
         public void SearchByTitle(string input)
 
         {
-            bool status = false;
+            //bool status = false;
             foreach (Book book in this._books)
             {
                 if (book.Title == input)
                 {
                     Console.WriteLine("Yes the book is available");
-                    status = true;
+                    //status = true;
                 }
             }
 
