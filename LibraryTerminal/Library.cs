@@ -11,6 +11,7 @@ namespace LibraryTerminal
         {
             new Book("Dr.Suess","The cat in the Hat",true,""),
             new Book("Jhumpa Lahiri", "Interpreter of Maladies" , true ,""),
+            new Book("Jim Harrison", "Woman Lit by Fireflies", false, "5/14/21"),
             new Book("Jim Harrison", "Woman Lit by Fireflies", false, "5/14/2021"),
             new Book("Leslie Orchard", "Hacking RSS and Atom", true, ""),
             new Book("Christian Klaver", "Shadows Over London", true, ""),
@@ -21,6 +22,7 @@ namespace LibraryTerminal
             new Book("William Shakespeare", "Comedy of Errors", true, ""),
             new Book("Elizabeth Haydon", "Rhapsody", true, ""),
             new Book("John Feinstein", "Last Amateurs", true, ""),
+
         };
 
         //property
@@ -45,13 +47,13 @@ namespace LibraryTerminal
                 Console.WriteLine(books.ToString());
             }
         }
-        public string CreateDueDate()
+        public void CreateDueDate()
         {
             var date = DateTime.Now.AddDays(14);
 
             var dateShort = date.ToShortDateString();
-            Console.WriteLine(dateShort);
-            return dateShort;
+            Console.WriteLine($"The due date is { dateShort}");
+            
         }
 
         public bool SearchByAuthor(string input)
@@ -67,7 +69,11 @@ namespace LibraryTerminal
             }
             if (!status)
             {
-                Console.WriteLine(" That book is not avaiable");
+
+                    Console.WriteLine(" That book is not available");                
+
+                
+
             }
             return status;
         }
@@ -77,23 +83,21 @@ namespace LibraryTerminal
             bool status = false;
             foreach (Book book in this._books)
             {
-                if (book.Author == input)
+                if (book.Title.ToLower().Trim() == input)
                 {
                     status = true;
-
                 }
             }
 
             if (status)
             {
-                Console.WriteLine("Yes the book is avaiable");
-                string date = CreateDueDate();
-                Console.WriteLine($"your due date is: {date}");
-
+                Console.WriteLine("Yes the book is available");
+                CreateDueDate();
+                
             }
             else
             {
-                Console.WriteLine(" That book is not avaiable");
+                Console.WriteLine(" That book is not available");
             }
         }
 
@@ -106,7 +110,7 @@ namespace LibraryTerminal
             {
                 if (book.Title == input)
                 {
-                    Console.WriteLine("Yes the book is avaiable");
+                    Console.WriteLine("Yes the book is available");
                     status = true;
                 }
             }
