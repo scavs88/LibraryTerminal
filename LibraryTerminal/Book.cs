@@ -55,7 +55,7 @@ namespace LibraryTerminal
 
             
         {
-            
+ 
             string formattedList = string.Format("{0, -20} {1, -30} {2, -16} {3, -16}", this._author, this._title, this._status, this._duedate);           
             return formattedList;
         }
