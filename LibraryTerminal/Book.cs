@@ -45,6 +45,11 @@ namespace LibraryTerminal
             this._duedate = duedate;
         }
 
+        public Book()
+        {
+
+        }
+
         //override method
         public override string ToString()
         {

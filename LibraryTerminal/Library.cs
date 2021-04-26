@@ -131,6 +131,25 @@ namespace LibraryTerminal
                 }
             }
         }
+
+        public void SearchByKyword(string input)
+        {
+            Book books = new Book();
+            for (int i = 0; i < _books.Count; i++)
+            {
+                foreach (Book word in this._books)
+                {
+                    if (books.Title.Contains(input))
+                    {
+                        Console.WriteLine($"We found {word.ToString()}");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"There was no book with {word} in any title.");
+                    }
+                }              
+            }
+        }
     }
 }
 
