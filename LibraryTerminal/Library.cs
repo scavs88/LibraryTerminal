@@ -121,9 +121,10 @@ namespace LibraryTerminal
         {
             foreach (Book word in this._books)
             {
-                if (word.Title == input)
+                if (word.Title.ToLower().Trim() == input)
                 {
                     Console.WriteLine($"We found {word.ToString()}");
+                    
                 }
                 else
                 {
@@ -131,6 +132,7 @@ namespace LibraryTerminal
                 }
             }
         }
+
     }
 }
 

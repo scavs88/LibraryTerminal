@@ -47,6 +47,8 @@ namespace LibraryTerminal
             } else if (choice == "3")
             {
                 //implement keyword search here
+                string input = Console.ReadLine().Trim().ToLower();
+                library.SearchByKeyword(input);
             } 
             else if (choice == "4")
             {
