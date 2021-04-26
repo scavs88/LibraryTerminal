@@ -16,7 +16,7 @@ namespace LibraryTerminal
             Console.WriteLine("Please select a menu item");
             Console.WriteLine("1.) Display library inventory.");
             Console.WriteLine("2.) Search for a book by author");
-            Console.WriteLine("3.) Search for a book by title");
+            Console.WriteLine("3.) Search for a book by title/keyword");
             Console.WriteLine("4.) Checkout book");
             Console.WriteLine("5.) Return a book");
             string choice = Console.ReadLine();
@@ -46,7 +46,9 @@ namespace LibraryTerminal
                 }
             } else if (choice == "3")
             {
-                //implement keyword search here
+                Console.WriteLine("Enter a keyword to search for");
+                string input = Console.ReadLine();
+                library.SearchByKyword(input);
             } 
             else if (choice == "4")
             {
