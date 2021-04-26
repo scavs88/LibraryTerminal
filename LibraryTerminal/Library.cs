@@ -110,6 +110,13 @@ namespace LibraryTerminal
                 Console.WriteLine(" That book is not avaiable");
             }
         }
+        public void ReturnBook(string title)
+        {
+            //Console.WriteLine("Enter the title of the book to return");
+            //string title = Console.ReadLine().Trim().ToLower();
+
+            
+        } 
     }
 
 
