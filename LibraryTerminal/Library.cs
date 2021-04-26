@@ -33,20 +33,21 @@ namespace LibraryTerminal
         public void DisplayList()
         {
             foreach (Book books in this._books)
+
             {
                 Console.WriteLine(books.ToString());
             }
         }
-
         public string CreateDueDate()
         {
             var date = DateTime.Now.AddDays(14);
+
             var dateShort = date.ToShortDateString();
             Console.WriteLine(dateShort);
             return dateShort;
         }
 
-        public void SearchByAuthor(string input)
+        public bool SearchByAuthor(string input)
         {
             bool status = false;
             foreach (Book book in this._books)
@@ -60,11 +61,9 @@ namespace LibraryTerminal
             if (!status)
             {
                     Console.WriteLine(" That book is not avaiable");                
-            }          
-
+            }
+            return status;
         }
-
-
 
         public void Checkout(string input)
         {
@@ -89,33 +88,35 @@ namespace LibraryTerminal
             {
                 Console.WriteLine(" That book is not avaiable");
             }
-
-
         }
 
 
         public void SearchByTitle(string input)
+
         {
-            bool status = false;
+            //bool status = false;
             foreach (Book book in this._books)
             {
                 if (book.Title == input)
                 {
-                    status = true;
-                    Console.WriteLine(book);
+                    Console.WriteLine("Yes the book is avaiable");
+                    //status = true;
                 }
             }
-            if (!status)
-            {
-                Console.WriteLine(" That book is not avaiable");
-            }
+           
         }
-        public void ReturnBook(string title)
+        public void ReturnBook()
         {
-            //Console.WriteLine("Enter the title of the book to return");
-            //string title = Console.ReadLine().Trim().ToLower();
-
-            
+            Console.WriteLine("Enter the title of the book to return");
+            string title1 = Console.ReadLine().Trim().ToLower();
+            foreach(Book book in this._books)
+            {
+                if (book.Title.ToLower().Trim() == title1)
+                {
+                    book.Status = true;                    
+                }
+            }
+            Console.WriteLine("You retured the book successfuly ");
         } 
     }
 
