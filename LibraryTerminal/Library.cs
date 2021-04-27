@@ -10,7 +10,7 @@ namespace LibraryTerminal
         private List<Book> _books = new List<Book>
         {
             new Book("Dr. Seuss","The Cat in the Hat",true,""),
-            new Book("Jhumpa Lahiri", "Interpreter of Maladies" , true ,""),           
+            new Book("Jhumpa Lahiri", "Interpreter of Maladies" , true ,""),
             new Book("Jim Harrison", "Woman Lit by Fireflies", false, "5/14/2021"),
             new Book("Jim Harrison", "Legends of the Fall", true, ""),
             new Book("Leslie Orchard", "Hacking RSS and Atom", true, ""),
@@ -50,13 +50,13 @@ namespace LibraryTerminal
                 counter++;
             }
         }
-        public void CreateDueDate()
+        public string CreateDueDate()
         {
             var date = DateTime.Now.AddDays(14);
 
             var dateShort = date.ToShortDateString();
             Console.WriteLine($"The due date is { dateShort}");
-
+            return dateShort;
         }
 
         public bool SearchByAuthor(string input)
@@ -67,43 +67,41 @@ namespace LibraryTerminal
             int counter = 1;
             foreach (Book book in this._books)
             {
-                
+
                 if (book.Author == input)
                 {
-                    status = true;                            
+                    status = true;
                     Console.WriteLine($"{counter}. {book}");
-                    counter++;                    
+                    counter++;
                 }
-                
-            }            
+
+            }
             return status;
         }
 
         public void Checkout(string input)
         {
-            
             bool status = false;
-            foreach (Book book in this._books)
+            for (int i = 0; i < _books.Count; i++)
             {
-                if (book.Title.ToLower().Trim() == input && book.Status == true)
-                {                   
+                if (_books[i].Title.ToLower().Trim() == input && _books[i].Status == true)
+                {
                     status = true;
+                    this._books[i].Status = false;
+                    Console.WriteLine($"You have checked out '{input}' ");
+                    this._books[i].Duedate = CreateDueDate();
+
+
                 }
             }
-
-            if (status)
-            {
-                Console.WriteLine($"You have checked out '{input}' ");                
-                CreateDueDate();
-            }
-            else
+            if (!status)
             {
                 Console.WriteLine(" That book is not available");
             }
         }
 
 
-       
+
 
         public List<Book> SearchByKeyword(string input)
         {
@@ -136,12 +134,13 @@ namespace LibraryTerminal
             Console.WriteLine("Enter the title of the book to return");
             string title1 = Console.ReadLine().Trim().ToLower();
             bool status1 = false;
-            foreach (Book book in this._books)
+            for (int i = 0; i < this._books.Count; i++)
             {
-                if (book.Title.ToLower().Trim() == title1 && book.Status == false)
+                if (this._books[i].Title.ToLower().Trim() == title1 && _books[i].Status == false)
                 {
 
-                    book.Status = true;
+                    this._books[i].Status = true;
+                    this._books[i].Duedate = " ";
                     status1 = true;
 
                 }
@@ -155,9 +154,6 @@ namespace LibraryTerminal
             {
                 Console.WriteLine("This book has not been checked out");
             }
-
-
-
         }
 
     }
