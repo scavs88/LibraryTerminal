@@ -12,6 +12,7 @@ namespace LibraryTerminal
             new Book("Dr. Seuss","The Cat in the Hat",false,""),
             new Book("Jhumpa Lahiri", "Interpreter of Maladies" , true ,""),           
             new Book("Jim Harrison", "Woman Lit by Fireflies", false, "5/14/2021"),
+            new Book("Jim Harrison", "Legends of the Fall", true, ""),
             new Book("Leslie Orchard", "Hacking RSS and Atom", true, ""),
             new Book("Christian Klaver", "Shadows Over London", true, ""),
             new Book("Esther Averil", "Jenny and the Cat Club", false,  "5/7/2021"),
@@ -78,11 +79,7 @@ namespace LibraryTerminal
                     Console.WriteLine(book);
                     Console.WriteLine("That book is not available for check out.");                   
                 }                
-            }
-            if (found == false)
-            {
-                Console.WriteLine("That was not a valid author.");              
-            }
+            }            
             return status;
         }
 
@@ -112,17 +109,26 @@ namespace LibraryTerminal
 
        
 
-        public void SearchByKeyword(string input)
+        public List<Book> SearchByKeyword(string input)
         {
-            int counter = 1;           
+
+            List<Book> titleList = new List<Book>();
             for (int i = 0; i < _books.Count; i++)
             {
                 if (this._books[i].Title.ToLower().Trim().Contains(input))
-                {                  
-                    Console.WriteLine($"{counter}. {this._books[i].ToString()}");
-                    counter++;
+                {
+                    titleList.Add(this._books[i]);
+                    //Console.WriteLine($"{this._books[i].ToString()}");
                 }
             }
+            int counter = 1;
+            foreach(Book book in titleList)
+            {
+                Console.WriteLine($"{counter},{book.ToString()}");
+                counter++;
+            }
+            return titleList;
+
         }
 
 
