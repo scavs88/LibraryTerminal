@@ -110,16 +110,26 @@ namespace LibraryTerminal
 
        
 
-        public void SearchByKeyword(string input)
+        public List<Book> SearchByKeyword(string input)
         {
 
+            List<Book> titleList = new List<Book>();
             for (int i = 0; i < _books.Count; i++)
             {
                 if (this._books[i].Title.ToLower().Trim().Contains(input))
-                {                  
-                    Console.WriteLine($"{this._books[i].ToString()}");
+                {
+                    titleList.Add(this._books[i]);
+                    //Console.WriteLine($"{this._books[i].ToString()}");
                 }
             }
+            int counter = 1;
+            foreach(Book book in titleList)
+            {
+                Console.WriteLine($"{counter},{book.ToString()}");
+                counter++;
+            }
+            return titleList;
+
         }
 
 
