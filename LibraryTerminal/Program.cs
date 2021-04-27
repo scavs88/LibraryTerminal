@@ -11,8 +11,6 @@ namespace LibraryTerminal
             Console.WriteLine("Welcome to the library");
             Library library = new Library();
             bool runProgram = true;
-            int choice;
-            bool userInput = false;
             while (runProgram)
             {
                 Console.WriteLine("Please select a menu item");
@@ -24,7 +22,7 @@ namespace LibraryTerminal
                 
                 try                    
                 {
-                    choice = int.Parse(Console.ReadLine());
+                    int choice = int.Parse(Console.ReadLine());
                     if (choice == 1)
                     {
                         Console.WriteLine(string.Format("{0, -20} {1, -30} {2, -16} {3, -16}", "Author", "Title", "On shelf", "Due date"));
@@ -55,13 +53,8 @@ namespace LibraryTerminal
                             }
                             else
                             {
-                                Console.WriteLine("That was an invalid entry");
-                                break;
+                                Console.WriteLine($"We do not currently have any books by {name1}");
                             }
-                        }
-                        else
-                        {
-                            Console.WriteLine($"We do not currently have any books by {name1}");
                         }
                     }
                     else if (choice == 3)
