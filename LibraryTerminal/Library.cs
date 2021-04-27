@@ -21,7 +21,6 @@ namespace LibraryTerminal
             new Book("William Shakespeare", "Comedy of Errors", true, ""),
             new Book("Elizabeth Haydon", "Rhapsody", true, ""),
             new Book("John Feinstein", "Last Amateurs", true, ""),
-
         };
 
 
