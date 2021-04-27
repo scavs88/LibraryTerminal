@@ -25,8 +25,8 @@ namespace LibraryTerminal
                     int choice = int.Parse(Console.ReadLine());
                     if (choice == 1)
                     {
-                        Console.WriteLine(string.Format("{0, -20} {1, -30} {2, -16} {3, -16}", "Author", "Title", "On shelf", "Due date"));
-                        Console.WriteLine(string.Format("{0, -20} {1, -30} {2, -16} {3, -16}", "======", "=====", "========", "========"));
+                        Console.WriteLine(string.Format("{0, -6}  {1, -23} {2, -30} {3, -16} {4,-15}", "No.", "Author", "Title", "On shelf", "Due date"));
+                        Console.WriteLine(string.Format("{0, -6}  {1, -23} {2, -30} {3, -16} {4,-15}", "===", "======", "=====", "========", "========"));
                         library.DisplayList();
                     }
                     else if (choice == 2)
@@ -37,24 +37,9 @@ namespace LibraryTerminal
                         bool check1 = library.SearchByAuthor(name1);
                         //Console.WriteLine(check1);
                         
-                        if (check1 == true)
-                        {                            
-                            Console.WriteLine("Do you want to check this book out? y/n");                            
-                            string respond = Console.ReadLine().ToLower().Trim();
-                            if (respond == "y")
-                            {
-                                Console.WriteLine($"your due date is:");
-                                library.CreateDueDate();
-                            }
-                            else if (respond == "n")
-                            {
-                                Console.WriteLine("We'll put that title back on the shelf.");
-                                continue;
-                            }
-                            else
-                            {
-                                Console.WriteLine($"We do not currently have any books by {name1}");
-                            }
+                        if (check1 == false)
+                        {                                                      
+                                Console.WriteLine($"We do not currently have any books by '{name1}'");                          
                         }
                     }
                     else if (choice == 3)
@@ -63,21 +48,14 @@ namespace LibraryTerminal
                         string input = Console.ReadLine();
                         Console.WriteLine("We found");
                         library.SearchByKeyword(input);
-                        Console.WriteLine("Please select a book to checkout");
-                        int selection = int.Parse(Console.ReadLine());
+                        
                         
                     }
                     else if (choice == 4)
                     {
-                        //Console.WriteLine("Enter the title of the book you would like to checkout");
-                        // string checkTitle = Console.ReadLine().Trim().ToLower();
-                        //library.Checkout(checkTitle);
-
-
-                        library.DisplayList();
-                        Console.WriteLine("Select a book from the list");
-                        int selection1 = int.Parse(Console.ReadLine());
-                        library.Checkout(selection1);
+                        Console.WriteLine("Enter the title of the book you would like to checkout");
+                         string checkTitle = Console.ReadLine().Trim().ToLower();
+                        library.Checkout(checkTitle);
                     }
                     else if (choice == 5)
                     {
