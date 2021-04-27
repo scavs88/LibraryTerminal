@@ -22,7 +22,6 @@ namespace LibraryTerminal
             new Book("William Shakespeare", "Comedy of Errors", true, ""),
             new Book("Elizabeth Haydon", "Rhapsody", true, ""),
             new Book("John Feinstein", "Last Amateurs", true, ""),
-
         };
 
 
@@ -43,9 +42,12 @@ namespace LibraryTerminal
 
         public void DisplayList()
         {
+
+            int counter = 1;
             foreach (Book books in this._books)
             {
-                Console.WriteLine(books.ToString());
+                Console.WriteLine($"{counter}. {books.ToString()}");
+                counter++;
             }
         }
         public void CreateDueDate()
@@ -60,43 +62,39 @@ namespace LibraryTerminal
         public bool SearchByAuthor(string input)
         {
             bool status = false;
-            bool found = false;
+            Console.WriteLine(string.Format("{0, -6}  {1, -23} {2, -30} {3, -16} {4,-15}", "No.", "Author", "Title", "On shelf", "Due date"));
+            Console.WriteLine(string.Format("{0, -6}  {1, -23} {2, -30} {3, -16} {4,-15}", "===", "======", "=====", "========", "========"));
+            int counter = 1;
             foreach (Book book in this._books)
-            {               
-                if (book.Author == input && book.Status == true)
+            {
+                
+                if (book.Author == input)
                 {
-                    status = true;
-                    found = true;
-                    Console.WriteLine(string.Format("{0, -20} {1, -30} {2, -16} {3, -16}", "Author", "Title", "On shelf", "Due date"));
-                    Console.WriteLine(string.Format("{0, -20} {1, -30} {2, -16} {3, -16}", "======", "=====", "========", "========"));
-                    Console.WriteLine(book);
-                    break;
+                    status = true;                            
+                    Console.WriteLine($"{counter}. {book}");
+                    counter++;                    
                 }
-                else if (book.Author == input && book.Status == false)
-                {
-                    found = true;
-                    Console.WriteLine(book);
-                    Console.WriteLine("That book is not available for check out.");                   
-                }                
+                
             }            
             return status;
         }
 
         public void Checkout(string input)
         {
+            
             bool status = false;
             foreach (Book book in this._books)
             {
-                if (book.Title.ToLower().Trim() == input)
-                {
+                if (book.Title.ToLower().Trim() == input && book.Status == true)
+                {                   
                     status = true;
                 }
             }
 
             if (status)
             {
-                Console.WriteLine("Yes the book is available");
-                CreateDueDate();               
+                Console.WriteLine($"You have checked out '{input}' ");                
+                CreateDueDate();
             }
             else
             {
@@ -120,9 +118,11 @@ namespace LibraryTerminal
                 }
             }
             int counter = 1;
-            foreach(Book book in titleList)
+            Console.WriteLine(string.Format("{0, -6}  {1, -23} {2, -30} {3, -16} {4,-15}", "No.", "Author", "Title", "On shelf", "Due date"));
+            Console.WriteLine(string.Format("{0, -6}  {1, -23} {2, -30} {3, -16} {4,-15}", "===", "======", "=====", "========", "========"));
+            foreach (Book book in titleList)
             {
-                Console.WriteLine($"{counter},{book.ToString()}");
+                Console.WriteLine($"{counter}. {book.ToString()}");
                 counter++;
             }
             return titleList;
