@@ -12,6 +12,7 @@ namespace LibraryTerminal
             new Book("Dr. Seuss","The Cat in the Hat",true,""),
             new Book("Jhumpa Lahiri", "Interpreter of Maladies" , true ,""),           
             new Book("Jim Harrison", "Woman Lit by Fireflies", false, "5/14/2021"),
+            new Book("Jim Harrison", "Legends of the Fall", true, ""),
             new Book("Leslie Orchard", "Hacking RSS and Atom", true, ""),
             new Book("Christian Klaver", "Shadows Over London", true, ""),
             new Book("Esther Averil", "Jenny and the Cat Club", false,  "5/7/2021"),
@@ -77,11 +78,7 @@ namespace LibraryTerminal
                     Console.WriteLine(book);
                     Console.WriteLine("That book is not available for check out.");                   
                 }                
-            }
-            if (found == false)
-            {
-                Console.WriteLine("That was not a valid author.");              
-            }
+            }            
             return status;
         }
 
