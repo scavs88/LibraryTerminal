@@ -67,8 +67,8 @@ namespace LibraryTerminal
                 {
                     status = true;
                     found = true;
-                    Console.WriteLine(string.Format("{0, -20} {1, -30} {2, -16} {3, -16}", "Author", "Title", "On shelf", "Due date"));
-                    Console.WriteLine(string.Format("{0, -20} {1, -30} {2, -16} {3, -16}", "======", "=====", "========", "========"));
+                    Console.WriteLine(string.Format("{0,-3} {0, -23} {1, -30} {2, -21} {3, -20} {4, -17}", "Author", "Title", "On shelf", "Due date"));
+                    Console.WriteLine(string.Format("{0,-3} {0, -23} {1, -30} {2, -21} {3, -20} {4, -17}", "======", "=====", "========", "========"));
                     Console.WriteLine(book);
                     break;
                 }
