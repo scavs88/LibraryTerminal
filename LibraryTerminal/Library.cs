@@ -59,17 +59,28 @@ namespace LibraryTerminal
         public bool SearchByAuthor(string input)
         {
             bool status = false;
+            bool found = false;
             foreach (Book book in this._books)
-            {
-                if (book.Author == input)
+            {               
+                if (book.Author == input && book.Status == true)
                 {
                     status = true;
+                    found = true;
+                    Console.WriteLine(string.Format("{0, -20} {1, -30} {2, -16} {3, -16}", "Author", "Title", "On shelf", "Due date"));
+                    Console.WriteLine(string.Format("{0, -20} {1, -30} {2, -16} {3, -16}", "======", "=====", "========", "========"));
                     Console.WriteLine(book);
+                    break;
                 }
+                else if (book.Author == input && book.Status == false)
+                {
+                    found = true;
+                    Console.WriteLine(book);
+                    Console.WriteLine("That book is not available for check out.");                   
+                }                
             }
-            if (!status)
+            if (found == false)
             {
-                Console.WriteLine(" That book is not available");
+                Console.WriteLine("That was not a valid author.");              
             }
             return status;
         }
@@ -99,16 +110,26 @@ namespace LibraryTerminal
 
        
 
-        public void SearchByKeyword(string input)
+        public List<Book> SearchByKeyword(string input)
         {
 
+            List<Book> titleList = new List<Book>();
             for (int i = 0; i < _books.Count; i++)
             {
                 if (this._books[i].Title.ToLower().Trim().Contains(input))
-                {                  
-                    Console.WriteLine($"{this._books[i].ToString()}");
+                {
+                    titleList.Add(this._books[i]);
+                    //Console.WriteLine($"{this._books[i].ToString()}");
                 }
             }
+            int counter = 1;
+            foreach(Book book in titleList)
+            {
+                Console.WriteLine($"{counter},{book.ToString()}");
+                counter++;
+            }
+            return titleList;
+
         }
 
 
