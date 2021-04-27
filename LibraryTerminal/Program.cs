@@ -53,8 +53,13 @@ namespace LibraryTerminal
                             }
                             else
                             {
-                                Console.WriteLine($"We do not currently have any books by {name1}");
+                                Console.WriteLine("That was an invalid entry");
+                                break;
                             }
+                        }
+                        else
+                        {
+                            Console.WriteLine($"We do not currently have any books by {name1}");
                         }
                     }
                     else if (choice == 3)
