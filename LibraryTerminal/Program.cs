@@ -14,11 +14,11 @@ namespace LibraryTerminal
             while (runProgram)
             {
                 Console.WriteLine("Please select a menu item");
-                Console.WriteLine("1.) Display library inventory.");
-                Console.WriteLine("2.) Search for a book by author");
-                Console.WriteLine("3.) Search for a book by title/keyword");
-                Console.WriteLine("4.) Checkout book");
-                Console.WriteLine("5.) Return a book");
+                Console.WriteLine("1. Display library inventory.");
+                Console.WriteLine("2. Search for a book by author");
+                Console.WriteLine("3. Search for a book by title/keyword");
+                Console.WriteLine("4. Checkout book");
+                Console.WriteLine("5. Return a book");
                 
                 try                    
                 {
@@ -63,12 +63,21 @@ namespace LibraryTerminal
                         string input = Console.ReadLine();
                         Console.WriteLine("We found");
                         library.SearchByKeyword(input);
+                        Console.WriteLine("Please select a book to checkout");
+                        int selection = int.Parse(Console.ReadLine());
+                        
                     }
                     else if (choice == 4)
                     {
-                        Console.WriteLine("Enter the title of the book you would like to checkout");
-                        string checkTitle = Console.ReadLine().Trim().ToLower();
-                        library.Checkout(checkTitle);
+                        //Console.WriteLine("Enter the title of the book you would like to checkout");
+                        // string checkTitle = Console.ReadLine().Trim().ToLower();
+                        //library.Checkout(checkTitle);
+
+
+                        library.DisplayList();
+                        Console.WriteLine("Select a book from the list");
+                        int selection1 = int.Parse(Console.ReadLine());
+                        library.Checkout(selection1);
                     }
                     else if (choice == 5)
                     {

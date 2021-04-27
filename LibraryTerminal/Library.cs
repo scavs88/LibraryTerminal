@@ -9,7 +9,7 @@ namespace LibraryTerminal
         //field
         private List<Book> _books = new List<Book>
         {
-            new Book("Dr. Seuss","The Cat in the Hat",true,""),
+            new Book("Dr. Seuss","The Cat in the Hat",false,""),
             new Book("Jhumpa Lahiri", "Interpreter of Maladies" , true ,""),           
             new Book("Jim Harrison", "Woman Lit by Fireflies", false, "5/14/2021"),
             new Book("Leslie Orchard", "Hacking RSS and Atom", true, ""),
@@ -41,9 +41,11 @@ namespace LibraryTerminal
 
         public void DisplayList()
         {
+            int counter = 1;
             foreach (Book books in this._books)
             {
-                Console.WriteLine(books.ToString());
+                Console.WriteLine($"{counter}  {books.ToString()}");
+                counter++;
             }
         }
         public void CreateDueDate()
@@ -84,12 +86,13 @@ namespace LibraryTerminal
             return status;
         }
 
-        public void Checkout(string input)
+        public void Checkout(int input)
         {
+            
             bool status = false;
             foreach (Book book in this._books)
             {
-                if (book.Title.ToLower().Trim() == input)
+                if (input <= this._books.Count && book.Status == true)
                 {
                     status = true;
                 }
@@ -111,12 +114,13 @@ namespace LibraryTerminal
 
         public void SearchByKeyword(string input)
         {
-
+            int counter = 1;           
             for (int i = 0; i < _books.Count; i++)
             {
                 if (this._books[i].Title.ToLower().Trim().Contains(input))
                 {                  
-                    Console.WriteLine($"{this._books[i].ToString()}");
+                    Console.WriteLine($"{counter}. {this._books[i].ToString()}");
+                    counter++;
                 }
             }
         }
